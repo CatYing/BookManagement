@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}图书详情{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-5">
+                <div class="img">
+                    <img src="{% url 'media' book.head_img %}" alt="" width="100%" height="100%">
+                </div>
+            </div>
+
+            <div class="col-md-6 col-md-offset-1">
+                <h2 class="text-center">{{ book.name }}</h2>
+                <br>
+                <h3>作者：{{ book.author.name }}   
+                        {% if book.author.age %}
+                        {{ book.author.age }}岁   
+                        {% endif %}
+                        {% if book.author.country %}
+                        来自{{ book.author.country }}
+                        {% endif %}
+                </h3>
+                <h3>出版社：{{ book.publisher }}</h3>
+                <h3>出版日期：{{ book.publish_date|date:"Y-m-d" }}</h3>
+                <h3>价格：{{ book.price }}</h3>
+                <h3>ISBN:{{ book.ISBN }}</h3>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
